@@ -6,9 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ${{ 'kaninson
-
-/nginx-html' }}
+  IMAGE_NAME: ${{ 'kaninson' }}
 
 jobs:
   build-and-push:
