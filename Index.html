@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>โปรไฟล์ผู้ใช้</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .profile-container {
+      max-width: 500px;
+      background: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    input[type="file"] {
+      margin: 10px 0;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .label {
+      text-align: left;
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <h2>โปรไฟล์ผู้ใช้</h2>
+    <img id="profileImage" src="https://via.placeholder.com/150" alt="รูปโปรไฟล์" class="profile-pic"><br>
+    
+    <input type="file" id="imageUpload" accept="image/*"><br>
+
+    <label class="label" for="fullName">ชื่อ - นามสกุล</label>
+    <input type="text" id="fullName" value="สมชาย ใจดี">
+
+    <label class="label" for="email">อีเมล</label>
+    <input type="email" id="email" value="somchai@example.com">
+
+    <label class="label" for="phone">เบอร์โทร</label>
+    <input type="tel" id="phone" value="0812345678">
+
+    <button onclick="saveProfile()">บันทึกข้อมูล</button>
+
+    <p id="saveMessage" style="color: green; margin-top: 10px;"></p>
+  </div>
+
+  <script>
+    // แสดงรูปภาพที่อัปโหลด
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('profileImage').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function saveProfile() {
+      const name = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // ตัวอย่างแสดงข้อความบันทึก (ไม่มี backend จริง)
+      document.getElementById('saveMessage').innerText = "✔️ ข้อมูลถูกบันทึกเรียบร้อยแล้ว!";
+      console.log("ชื่อ:", name, "อีเมล:", email, "โทร:", phone);
+    }
+  </script>
+
+</body>
+</html>
